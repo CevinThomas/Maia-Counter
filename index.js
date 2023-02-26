@@ -2,6 +2,7 @@ const express = require("express");
 const cheerio = require("cheerio");
 const axios = require("axios");
 const app = express();
+require("dotenv").config();
 const port = 3000;
 const organizationId = "76974546";
 
@@ -48,6 +49,6 @@ app.get("/health", (req, res) => {
 });
 */
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log("LISTENING");
 });
