@@ -22,6 +22,9 @@ app.get("/", (req, res) => {
     })
     .catch(() => res.send({ number: 1 }));
 });
+app.get("/health", (req, res) => {
+  res.send("Healthy");
+});
 /** app.get("/auth", (req, res) => {
   const code = req.query.code;
   const authUrl = `https://www.linkedin.com/oauth/v2/accessToken`;
