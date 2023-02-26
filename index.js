@@ -6,7 +6,21 @@ const port = 3000;
 const organizationId = "76974546";
 
 app.get("/", (req, res) => {
-  res.send("Healthy");
+  axios
+    .get(
+      "https://www.linkedin.com/pages-extensions/FollowCompany?id=76974546&counter=bottom"
+    )
+    .then((response) => {
+      const htmlData = response.data;
+      const $ = cheerio.load(htmlData);
+
+      const followerElement = $(".follower-count")[0].children[0].data;
+
+      const followerValue = followerElement.replace(",", "");
+
+      res.send({ number: +followerValue });
+    })
+    .catch(() => res.send({ number: 1 }));
 });
 app.get("/health", (req, res) => {
   res.send("Healthy");
