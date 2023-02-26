@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 
       res.send({ number: +followerValue });
     })
-    .then(() => res.send({ number: 0 }));
+    .catch(() => res.send({ number: 1 }));
 });
 /** app.get("/auth", (req, res) => {
   const code = req.query.code;
