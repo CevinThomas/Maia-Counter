@@ -6,6 +6,8 @@ require("dotenv").config();
 const port = 3000;
 const organizationId = "76974546";
 
+let cacheCount = 0;
+
 app.get("/", (req, res) => {
   axios
     .get(
@@ -18,10 +20,13 @@ app.get("/", (req, res) => {
       const followerElement = $(".follower-count")[0].children[0].data;
 
       const followerValue = followerElement.replace(",", "");
+      if (followerValue !== cacheCount) {
+        cacheCount = Number(followerValue);
+      }
 
       res.send({ number: +followerValue });
     })
-    .catch(() => res.send({ number: 1 }));
+    .catch(() => res.send({ number: cacheCount }));
 });
 app.get("/health", (req, res) => {
   res.send("Healthy");
