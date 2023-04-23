@@ -25,9 +25,9 @@ app.get("/", (req, res) => {
         cacheCount = Number(followerValue);
       }
 
-      res.send({ number: +followerValue });
+      res.send({ number: 1 });
     })
-    .catch(() => res.send({ number: 55 }));
+    .catch(() => res.send({ number: 1 }));
 });
 app.get("/health", (req, res) => {
   res.send("Healthy");
