@@ -47135,14 +47135,11 @@ app.get("/", (req, res) => {
       const followerElement = $(".follower-count")[0].children[0].data;
 
       const followerValue = followerElement.replace(",", "");
-      if (followerValue !== cacheCount) {
-        cacheCount = Number(followerValue);
+      cacheCount = Number(followerValue);
 
-      }
-
-      res.send({ number: 1 });
+      res.send({ number: +followerValue});
     })
-    .catch(() => res.send({ number: 1 }));
+    .catch(() => res.send({ number: cacheCount}));
 });
 app.get("/health", (req, res) => {
   res.send("Healthy");
