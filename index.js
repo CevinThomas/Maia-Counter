@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
     .get(
       "https://www.linkedin.com/pages-extensions/FollowCompany?id=76974546&counter=bottom"
     )
+
     .then((response) => {
       const htmlData = response.data;
       const $ = cheerio.load(htmlData);
