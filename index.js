@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
       const followerValue = followerElement.replace(",", "");
       if (followerValue !== cacheCount) {
         cacheCount = Number(followerValue);
+
       }
 
       res.send({ number: 1 });
@@ -32,28 +33,7 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.send("Healthy");
 });
-/** app.get("/auth", (req, res) => {
-  const code = req.query.code;
-  const authUrl = `https://www.linkedin.com/oauth/v2/accessToken`;
 
-  console.log("CODE: ", code);
-  const data = {
-    code: code,
-    grant_type: "authorization_code",
-    client_id: clientId,
-    client_secret: clientSecret,
-    redirect_uri: "https://localhost:3000/auth",
-  };
-  const config = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
-  axios.post(authUrl, data, config).then().catch();
-
-  res.send("HELLO");
-});
-*/
 
 app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log("LISTENING");
