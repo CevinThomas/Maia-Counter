@@ -34,4 +34,5 @@ app.get("/health", (req, res) => {
 
 app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log("LISTENING");
+  console.log("UP AND RUNNING")
 });
